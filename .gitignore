@@ -1,0 +1,19 @@
+# Security (Critical)
+.env
+
+# Python Virtual Environment
+venv/
+env/
+
+# Python compiled files
+__pycache__/
+*.py[cod]
+
+# Distribution / Build directories
+build/
+dist/
+*.egg-info/
+.eggs/
+
+# Logs
+*.log

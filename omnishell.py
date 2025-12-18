@@ -8,16 +8,14 @@ from dotenv import load_dotenv
 from langchain_groq import ChatGroq
 from langchain_core.messages import SystemMessage, HumanMessage, AIMessage
 
-# --- SETUP & CONFIGURATION ---
 
-# 1. Logging Setup (Audit Trail)
 logging.basicConfig(
     filename='omnishell.log',
     level=logging.INFO,
     format='%(asctime)s - %(levelname)s - %(message)s'
 )
 
-# 2. Dependency Check
+
 try:
     import distro
 except ImportError:
@@ -119,7 +117,6 @@ def execute_command(command):
     except Exception as e:
         return False, str(e)
 
-# --- MAIN LOOP ---
 
 if __name__ == "__main__":
     print(f"\n🧠 OmniShell v2.0 (Self-Healing Enabled)")

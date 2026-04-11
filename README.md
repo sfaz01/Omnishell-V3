@@ -36,7 +36,7 @@
 ### 1. Clone & Install
 
 ```bash
-git clone https://github.com/sfaz01/Omnishell.git
+git clone https://github.com/sfaz01/Omnishell-v3.git
 cd Omnishell
 
 # Create virtual environment

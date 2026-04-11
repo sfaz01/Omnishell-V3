@@ -54,9 +54,9 @@ all = [
 omni = "omnishell.cli:main"
 
 [project.urls]
-Homepage = "https://github.com/sfaz01/Omnishell"
-Repository = "https://github.com/sfaz01/Omnishell"
-Issues = "https://github.com/sfaz01/Omnishell/issues"
+Homepage = "https://github.com/sfaz01/Omnishell-v3"
+Repository = "https://github.com/sfaz01/Omnishell-v3"
+Issues = "https://github.com/sfaz01/Omnishell-v3/issues"
 
 [tool.setuptools.packages.find]
 include = ["omnishell*"]

@@ -1,6 +1,6 @@
 <div align="center">
 
-# 🧠 OmniShell
+#  OmniShell
 
 **Self-Healing AI Terminal Assistant for Linux**
 

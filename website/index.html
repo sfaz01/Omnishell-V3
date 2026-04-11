@@ -1,0 +1,564 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="OmniShell — A self-healing, AI-powered terminal assistant for Linux. Describe tasks in plain English, get distro-specific commands, with auto-fix and multi-LLM support.">
+    <meta name="keywords" content="OmniShell, AI terminal, Linux, CLI, LLM, self-healing, sysadmin, Groq, Ollama">
+    <meta name="author" content="Sarfaraz">
+    <title>OmniShell — Self-Healing AI Terminal for Linux</title>
+    <link rel="icon"
+        href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🧠</text></svg>">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- Background effects -->
+    <div class="bg-grid"></div>
+    <div class="bg-glow bg-glow--violet"></div>
+    <div class="bg-glow bg-glow--blue"></div>
+    <div class="bg-glow bg-glow--cyan"></div>
+    <div class="particles-container"></div>
+
+    <!-- ════════ NAVBAR ════════ -->
+    <nav class="navbar" id="navbar">
+        <div class="container">
+            <a href="#" class="navbar__brand">
+                <div class="navbar__brand-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"
+                        stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                        <polyline points="4 17 10 11 4 5" />
+                        <line x1="12" y1="19" x2="20" y2="19" />
+                    </svg></div>
+                <span>OmniShell</span>
+            </a>
+            <div class="navbar__links" id="nav-links">
+                <a href="#features" class="navbar__link">Features</a>
+                <a href="#how-it-works" class="navbar__link">How It Works</a>
+                <a href="#modes" class="navbar__link">Modes</a>
+                <a href="#providers" class="navbar__link">Providers</a>
+                <a href="#install" class="navbar__link">Install</a>
+                <a href="https://github.com/sfaz01/Omnishell" target="_blank" class="navbar__cta">
+                    ⭐ Star on GitHub
+                </a>
+            </div>
+            <button class="navbar__toggle" id="nav-toggle" aria-label="Toggle menu">☰</button>
+        </div>
+    </nav>
+
+    <!-- ════════ HERO ════════ -->
+    <section class="hero" id="hero">
+        <div class="container">
+            <div class="hero__content">
+                <div class="hero__badge">
+                    <span class="hero__badge-dot"></span>
+                    v3.0 — Now with Multi-LLM &amp; Conversational Memory
+                </div>
+
+                <h1 class="hero__title">
+                    Your Linux terminal,<br>
+                    <span class="gradient-text">powered by AI.</span>
+                </h1>
+
+                <p class="hero__subtitle">
+                    Describe what you want in plain English — OmniShell generates the right command
+                    for your distro, explains it, and auto-fixes itself if anything goes wrong.
+                </p>
+
+                <div class="hero__actions">
+                    <a href="#install" class="btn-primary">
+                        🚀 Get Started — It's Free
+                    </a>
+                    <a href="https://github.com/sfaz01/Omnishell" target="_blank" class="btn-secondary">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                            <path
+                                d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
+                        </svg>
+                        View on GitHub
+                    </a>
+                </div>
+
+                <div class="stats">
+                    <div class="stat">
+                        <div class="stat__value gradient-text" data-count="20" data-suffix="+">0+</div>
+                        <div class="stat__label">Distros Supported</div>
+                    </div>
+                    <div class="stat">
+                        <div class="stat__value gradient-text" data-count="4">0</div>
+                        <div class="stat__label">LLM Providers</div>
+                    </div>
+                    <div class="stat">
+                        <div class="stat__value gradient-text" data-count="12">0</div>
+                        <div class="stat__label">Safety Patterns</div>
+                    </div>
+                    <div class="stat">
+                        <div class="stat__value gradient-text" data-count="100" data-suffix="%">0%</div>
+                        <div class="stat__label">Open Source</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Terminal Demo -->
+            <div class="terminal">
+                <div class="terminal__header">
+                    <div class="terminal__dot terminal__dot--red"></div>
+                    <div class="terminal__dot terminal__dot--yellow"></div>
+                    <div class="terminal__dot terminal__dot--green"></div>
+                    <span class="terminal__title">omnishell — bash</span>
+                </div>
+                <div class="terminal__body" id="terminal-body">
+                    <div class="terminal__line">
+                        <span class="terminal__prompt">USER ></span>
+                        <span class="terminal__cursor"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ════════ DISTRO MARQUEE ════════ -->
+    <section class="marquee-section">
+        <div class="marquee-label">Works everywhere — auto-detects your distro</div>
+        <div class="marquee-track">
+            <div class="marquee-item"><span class="marquee-item__icon"><svg width="24" height="24" viewBox="0 0 24 24">
+                        <path
+                            d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 2.4L8.5 17.6h-1l3.5-13.2zm0 0l3.5 13.2h1L12 4.4z"
+                            fill="#1793D1" />
+                    </svg></span> Arch Linux</div>
+            <div class="marquee-item"><span class="marquee-item__icon"><svg width="24" height="24" viewBox="0 0 24 24">
+                        <circle cx="12" cy="12" r="10" fill="none" stroke="#E95420" stroke-width="1.5" />
+                        <circle cx="12" cy="5" r="2.2" fill="#E95420" />
+                        <circle cx="6.2" cy="15.5" r="2.2" fill="#E95420" />
+                        <circle cx="17.8" cy="15.5" r="2.2" fill="#E95420" />
+                    </svg></span> Ubuntu</div>
+            <div class="marquee-item"><span class="marquee-item__icon"><svg width="24" height="24" viewBox="0 0 24 24">
+                        <path
+                            d="M12 2l2.5 7h-1.3L12 5.5l-1.2 3.5H9.5L12 2zm-6.5 8.5l6.5 2-2 6.2L4 16l1.5-5.5zm13 0L20 16l-6 2.7-2-6.2 6.5-2z"
+                            fill="#51A2DA" />
+                    </svg></span> Fedora</div>
+            <div class="marquee-item"><span class="marquee-item__icon"><svg width="24" height="24" viewBox="0 0 24 24">
+                        <path
+                            d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 3c1.1 0 2.1.3 3 .8l-3 5.2-3-5.2c.9-.5 1.9-.8 3-.8zm-5.5 3.5L9.5 12l-3 5.2A8.96 8.96 0 016.5 8.5zM12 20c-1.8 0-3.5-.6-4.8-1.5L10 13l2 3.5 2-3.5 2.8 5.5c-1.3.9-3 1.5-4.8 1.5zm5.5-2.8L14.5 12l3-3.7c.8 1.5 1.2 3.2.9 5a8.5 8.5 0 01-.9 3.9z"
+                            fill="#D70751" />
+                    </svg></span> Debian</div>
+            <div class="marquee-item"><span class="marquee-item__icon"><svg width="24" height="24" viewBox="0 0 24 24">
+                        <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2z" fill="#73BA25" />
+                        <path d="M12 6c-3.31 0-6 2.69-6 6s2.69 6 6 6 6-2.69 6-6-2.69-6-6-6z" fill="#173f4f" />
+                    </svg></span> openSUSE</div>
+            <div class="marquee-item"><span class="marquee-item__icon"><svg width="24" height="24" viewBox="0 0 24 24">
+                        <path d="M12 2L3 19h4l5-9 5 9h4L12 2zm0 4l3.5 6.5h-7L12 6z" fill="#0D597F" />
+                    </svg></span> Alpine</div>
+            <div class="marquee-item"><span class="marquee-item__icon"><svg width="24" height="24" viewBox="0 0 24 24">
+                        <circle cx="12" cy="12" r="10" fill="#86BE43" />
+                        <path d="M7 12c0-2.76 2.24-5 5-5s5 2.24 5 5" stroke="#fff" stroke-width="2" fill="none" />
+                        <circle cx="12" cy="12" r="2" fill="#fff" />
+                    </svg></span> Linux Mint</div>
+            <div class="marquee-item"><span class="marquee-item__icon"><svg width="24" height="24" viewBox="0 0 24 24">
+                        <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2z" fill="#557C94" />
+                        <path d="M9 8h6v2H9zm0 3h8v2H9zm0 3h5v2H9z" fill="#fff" />
+                    </svg></span> Kali Linux</div>
+            <div class="marquee-item"><span class="marquee-item__icon"><svg width="24" height="24" viewBox="0 0 24 24">
+                        <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2z" fill="#0F94D2" />
+                        <path d="M12 6l4 6-4 6-4-6 4-6z" fill="#fff" opacity="0.9" />
+                    </svg></span> CachyOS</div>
+            <div class="marquee-item"><span class="marquee-item__icon"><svg width="24" height="24" viewBox="0 0 24 24">
+                        <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2z" fill="#35BF5C" />
+                        <path d="M8 10h8v4H8z" fill="#fff" rx="1" />
+                    </svg></span> Manjaro</div>
+            <div class="marquee-item"><span class="marquee-item__icon"><svg width="24" height="24" viewBox="0 0 24 24">
+                        <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2z" fill="#10B981" />
+                        <path d="M12 7l5 8.66H7L12 7z" fill="#fff" opacity="0.85" />
+                    </svg></span> Rocky Linux</div>
+            <div class="marquee-item"><span class="marquee-item__icon"><svg width="24" height="24" viewBox="0 0 24 24">
+                        <circle cx="12" cy="12" r="10" fill="#48B9C7" />
+                        <path d="M7 12c0-2.76 2.24-5 5-5s5 2.24 5 5-2.24 5-5 5" stroke="#fff" stroke-width="2"
+                            fill="none" />
+                    </svg></span> Pop!_OS</div>
+            <div class="marquee-item"><span class="marquee-item__icon"><svg width="24" height="24" viewBox="0 0 24 24">
+                        <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2z" fill="#7F3FBF" />
+                        <path d="M8 8l4 4-4 4m5-4h4" stroke="#fff" stroke-width="2" stroke-linecap="round"
+                            stroke-linejoin="round" fill="none" />
+                    </svg></span> EndeavourOS</div>
+            <div class="marquee-item"><span class="marquee-item__icon"><svg width="24" height="24" viewBox="0 0 24 24">
+                        <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2z" fill="#5277C3" />
+                        <path d="M12 6l2 3h-1v4h2l-3 5-3-5h2v-4h-1l2-3z" fill="#fff" />
+                    </svg></span> NixOS</div>
+            <!-- Duplicate for seamless loop -->
+            <div class="marquee-item"><span class="marquee-item__icon"><svg width="24" height="24" viewBox="0 0 24 24">
+                        <path
+                            d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 2.4L8.5 17.6h-1l3.5-13.2zm0 0l3.5 13.2h1L12 4.4z"
+                            fill="#1793D1" />
+                    </svg></span> Arch Linux</div>
+            <div class="marquee-item"><span class="marquee-item__icon"><svg width="24" height="24" viewBox="0 0 24 24">
+                        <circle cx="12" cy="12" r="10" fill="none" stroke="#E95420" stroke-width="1.5" />
+                        <circle cx="12" cy="5" r="2.2" fill="#E95420" />
+                        <circle cx="6.2" cy="15.5" r="2.2" fill="#E95420" />
+                        <circle cx="17.8" cy="15.5" r="2.2" fill="#E95420" />
+                    </svg></span> Ubuntu</div>
+            <div class="marquee-item"><span class="marquee-item__icon"><svg width="24" height="24" viewBox="0 0 24 24">
+                        <path
+                            d="M12 2l2.5 7h-1.3L12 5.5l-1.2 3.5H9.5L12 2zm-6.5 8.5l6.5 2-2 6.2L4 16l1.5-5.5zm13 0L20 16l-6 2.7-2-6.2 6.5-2z"
+                            fill="#51A2DA" />
+                    </svg></span> Fedora</div>
+            <div class="marquee-item"><span class="marquee-item__icon"><svg width="24" height="24" viewBox="0 0 24 24">
+                        <path
+                            d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 3c1.1 0 2.1.3 3 .8l-3 5.2-3-5.2c.9-.5 1.9-.8 3-.8zm-5.5 3.5L9.5 12l-3 5.2A8.96 8.96 0 016.5 8.5zM12 20c-1.8 0-3.5-.6-4.8-1.5L10 13l2 3.5 2-3.5 2.8 5.5c-1.3.9-3 1.5-4.8 1.5zm5.5-2.8L14.5 12l3-3.7c.8 1.5 1.2 3.2.9 5a8.5 8.5 0 01-.9 3.9z"
+                            fill="#D70751" />
+                    </svg></span> Debian</div>
+            <div class="marquee-item"><span class="marquee-item__icon"><svg width="24" height="24" viewBox="0 0 24 24">
+                        <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2z" fill="#73BA25" />
+                        <path d="M12 6c-3.31 0-6 2.69-6 6s2.69 6 6 6 6-2.69 6-6-2.69-6-6-6z" fill="#173f4f" />
+                    </svg></span> openSUSE</div>
+            <div class="marquee-item"><span class="marquee-item__icon"><svg width="24" height="24" viewBox="0 0 24 24">
+                        <path d="M12 2L3 19h4l5-9 5 9h4L12 2zm0 4l3.5 6.5h-7L12 6z" fill="#0D597F" />
+                    </svg></span> Alpine</div>
+            <div class="marquee-item"><span class="marquee-item__icon"><svg width="24" height="24" viewBox="0 0 24 24">
+                        <circle cx="12" cy="12" r="10" fill="#86BE43" />
+                        <path d="M7 12c0-2.76 2.24-5 5-5s5 2.24 5 5" stroke="#fff" stroke-width="2" fill="none" />
+                        <circle cx="12" cy="12" r="2" fill="#fff" />
+                    </svg></span> Linux Mint</div>
+            <div class="marquee-item"><span class="marquee-item__icon"><svg width="24" height="24" viewBox="0 0 24 24">
+                        <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2z" fill="#557C94" />
+                        <path d="M9 8h6v2H9zm0 3h8v2H9zm0 3h5v2H9z" fill="#fff" />
+                    </svg></span> Kali Linux</div>
+            <div class="marquee-item"><span class="marquee-item__icon"><svg width="24" height="24" viewBox="0 0 24 24">
+                        <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2z" fill="#0F94D2" />
+                        <path d="M12 6l4 6-4 6-4-6 4-6z" fill="#fff" opacity="0.9" />
+                    </svg></span> CachyOS</div>
+            <div class="marquee-item"><span class="marquee-item__icon"><svg width="24" height="24" viewBox="0 0 24 24">
+                        <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2z" fill="#35BF5C" />
+                        <path d="M8 10h8v4H8z" fill="#fff" rx="1" />
+                    </svg></span> Manjaro</div>
+            <div class="marquee-item"><span class="marquee-item__icon"><svg width="24" height="24" viewBox="0 0 24 24">
+                        <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2z" fill="#10B981" />
+                        <path d="M12 7l5 8.66H7L12 7z" fill="#fff" opacity="0.85" />
+                    </svg></span> Rocky Linux</div>
+            <div class="marquee-item"><span class="marquee-item__icon"><svg width="24" height="24" viewBox="0 0 24 24">
+                        <circle cx="12" cy="12" r="10" fill="#48B9C7" />
+                        <path d="M7 12c0-2.76 2.24-5 5-5s5 2.24 5 5-2.24 5-5 5" stroke="#fff" stroke-width="2"
+                            fill="none" />
+                    </svg></span> Pop!_OS</div>
+            <div class="marquee-item"><span class="marquee-item__icon"><svg width="24" height="24" viewBox="0 0 24 24">
+                        <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2z" fill="#7F3FBF" />
+                        <path d="M8 8l4 4-4 4m5-4h4" stroke="#fff" stroke-width="2" stroke-linecap="round"
+                            stroke-linejoin="round" fill="none" />
+                    </svg></span> EndeavourOS</div>
+            <div class="marquee-item"><span class="marquee-item__icon"><svg width="24" height="24" viewBox="0 0 24 24">
+                        <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2z" fill="#5277C3" />
+                        <path d="M12 6l2 3h-1v4h2l-3 5-3-5h2v-4h-1l2-3z" fill="#fff" />
+                    </svg></span> NixOS</div>
+        </div>
+
+    </section>
+
+    <!-- ════════ FEATURES ════════ -->
+    <section class="features section-padding" id="features">
+        <div class="container">
+            <div class="features__header reveal">
+                <span class="section-label">Why OmniShell</span>
+                <h2 class="section-title">Everything a Linux power user <span class="gradient-text">dreams of.</span>
+                </h2>
+                <p class="section-desc">
+                    From auto-detecting your distro to self-healing failed commands — OmniShell handles it all
+                    so you can focus on what matters.
+                </p>
+            </div>
+
+            <div class="features__grid reveal-stagger">
+                <div class="feature-card">
+                    <div class="feature-card__icon feature-card__icon--violet">🧠</div>
+                    <h3 class="feature-card__title">Distro-Agnostic Intelligence</h3>
+                    <p class="feature-card__desc">Auto-detects Arch, Ubuntu, Fedora, CachyOS, Alpine, and 15+ more
+                        distros. Always uses the right package manager.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-card__icon feature-card__icon--emerald">🩹</div>
+                    <h3 class="feature-card__title">Self-Healing Loop</h3>
+                    <p class="feature-card__desc">Command failed? OmniShell captures the error, feeds it back to the AI,
+                        and suggests a fixed version automatically.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-card__icon feature-card__icon--rose">🛡️</div>
+                    <h3 class="feature-card__title">Multi-Layer Safety</h3>
+                    <p class="feature-card__desc">Regex blocklist prevents fork bombs, disk wipes, and destructive
+                        commands. Sudo warnings & dry-run mode included.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-card__icon feature-card__icon--cyan">💬</div>
+                    <h3 class="feature-card__title">Conversational Memory</h3>
+                    <p class="feature-card__desc">Say "install nginx" then "now start it" — OmniShell remembers context
+                        across multi-turn conversations.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-card__icon feature-card__icon--amber">📜</div>
+                    <h3 class="feature-card__title">Command History & Stats</h3>
+                    <p class="feature-card__desc">Every command saved to SQLite. View history, track success rates, and
+                        never lose track of what you've run.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-card__icon feature-card__icon--blue">🎨</div>
+                    <h3 class="feature-card__title">Beautiful Rich Terminal</h3>
+                    <p class="feature-card__desc">Syntax-highlighted commands, animated spinners, colored panels, and
+                        pretty tables. Your terminal has never looked this good.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ════════ BEFORE / AFTER COMPARISON ════════ -->
+    <section class="comparison section-padding" id="comparison">
+        <div class="container">
+            <div class="comparison__header reveal">
+                <span class="section-label">The Difference</span>
+                <h2 class="section-title">Before vs. After <span class="gradient-text">OmniShell</span></h2>
+                <p class="section-desc">Stop Googling, stop copy-pasting from StackOverflow. Just describe what you
+                    need.</p>
+            </div>
+
+            <div class="comparison__grid reveal">
+                <div class="comparison__card comparison__card--old">
+                    <div class="comparison__card-header">
+                        <span>😩</span>
+                        <span>Without OmniShell</span>
+                    </div>
+                    <div class="comparison__card-body">$ how do i update on arch??
+                        $ google "arch linux update command"
+                        $ copy from reddit...
+                        $ sudo pacman -Syu
+                        :: error: failed to synchronize databases
+                        $ google "pacman sync error"
+                        $ try random fixes from forums...
+                        $ sudo pacman -Syyu <span style="color: rgba(255,255,255,0.3)">← hoping this works</span>
+                        <span style="color: rgba(244, 63, 94, 0.6)">15 minutes wasted 😤</span>
+                    </div>
+                </div>
+                <div class="comparison__card comparison__card--new">
+                    <div class="comparison__card-header">
+                        <span>😎</span>
+                        <span>With OmniShell</span>
+                    </div>
+                    <div class="comparison__card-body">$ omni "update my system"
+                        <span style="color: rgba(52,211,153,0.7)">👁️ Scanning: cat /etc/os-release</span>
+                        <span style="color: rgba(139,92,246,0.8)">🤖 SUGGESTION: sudo pacman -Syu</span>
+                        <span style="color: rgba(255,255,255,0.4)">[E]xecute, [X]plain, [S]kip?</span> e
+                        <span style="color: rgba(52,211,153,0.9)">✅ Command executed successfully.</span>
+
+                        <span style="color: rgba(52, 211, 153, 0.6)">5 seconds. Done. 🚀</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ════════ HOW IT WORKS ════════ -->
+    <section class="how-it-works section-padding" id="how-it-works">
+        <div class="container">
+            <div class="how-it-works__header reveal">
+                <span class="section-label">Under the Hood</span>
+                <h2 class="section-title">How <span class="gradient-text">OmniShell</span> works</h2>
+                <p class="section-desc">A 5-stage intelligent pipeline — from your plain English query to a perfectly
+                    executed command.</p>
+            </div>
+
+            <div class="pipeline reveal">
+                <div class="pipeline__step">
+                    <div class="pipeline__step-number">1</div>
+                    <div class="pipeline__step-icon">🗣️</div>
+                    <h4 class="pipeline__step-title">You Describe</h4>
+                    <p class="pipeline__step-desc">Type what you want in plain English</p>
+                </div>
+                <div class="pipeline__arrow">→</div>
+                <div class="pipeline__step">
+                    <div class="pipeline__step-number">2</div>
+                    <div class="pipeline__step-icon">👁️</div>
+                    <h4 class="pipeline__step-title">AI Diagnoses</h4>
+                    <p class="pipeline__step-desc">Runs safe commands to understand system state</p>
+                </div>
+                <div class="pipeline__arrow">→</div>
+                <div class="pipeline__step">
+                    <div class="pipeline__step-number">3</div>
+                    <div class="pipeline__step-icon">🧠</div>
+                    <h4 class="pipeline__step-title">Command Generated</h4>
+                    <p class="pipeline__step-desc">AI crafts the exact command for your distro</p>
+                </div>
+                <div class="pipeline__arrow">→</div>
+                <div class="pipeline__step">
+                    <div class="pipeline__step-number">4</div>
+                    <div class="pipeline__step-icon">🛡️</div>
+                    <h4 class="pipeline__step-title">Safety Check</h4>
+                    <p class="pipeline__step-desc">Blocklist + sudo warning + your approval</p>
+                </div>
+                <div class="pipeline__arrow">→</div>
+                <div class="pipeline__step">
+                    <div class="pipeline__step-number">5</div>
+                    <div class="pipeline__step-icon">🩹</div>
+                    <h4 class="pipeline__step-title">Execute & Heal</h4>
+                    <p class="pipeline__step-desc">Runs the command — auto-fixes if it fails</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ════════ MODES ════════ -->
+    <section class="modes section-padding" id="modes">
+        <div class="container">
+            <div class="modes__header reveal">
+                <span class="section-label">Your Rules</span>
+                <h2 class="section-title">Three modes for <span class="gradient-text">every skill level</span></h2>
+                <p class="section-desc">Whether you're learning Linux or you're a seasoned sysadmin, OmniShell adapts to
+                    you.</p>
+            </div>
+
+            <div class="modes__grid reveal-stagger">
+                <div class="mode-card mode-card--newbie">
+                    <div class="mode-card__icon">🟡</div>
+                    <h3 class="mode-card__name">Newbie Mode</h3>
+                    <p class="mode-card__desc">Extra explanations with every command. Heavy warnings before any sudo
+                        operation. Perfect for learning Linux safely.</p>
+                    <div class="mode-card__cmd">omni --mode newbie</div>
+                </div>
+                <div class="mode-card mode-card--pro">
+                    <div class="mode-card__icon">🟢</div>
+                    <h3 class="mode-card__name">Pro Mode</h3>
+                    <p class="mode-card__desc">Clean command output only. Safe mode blocks dangerous operations. The
+                        default for daily use — fast and focused.</p>
+                    <div class="mode-card__cmd">omni --mode pro</div>
+                </div>
+                <div class="mode-card mode-card--god">
+                    <div class="mode-card__icon">🔴</div>
+                    <h3 class="mode-card__name">God Mode</h3>
+                    <p class="mode-card__desc">No restrictions. Commands auto-execute without confirmation. Full power —
+                        use responsibly. You've been warned.</p>
+                    <div class="mode-card__cmd">omni --mode god</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ════════ PROVIDERS ════════ -->
+    <section class="providers section-padding" id="providers">
+        <div class="container">
+            <div class="providers__header reveal">
+                <span class="section-label">Flexible AI Backend</span>
+                <h2 class="section-title">Choose your <span class="gradient-text">LLM provider</span></h2>
+                <p class="section-desc">Not locked into one AI. Switch between cloud and local models with a single
+                    flag.</p>
+            </div>
+
+            <div class="providers__grid reveal-stagger">
+                <div class="provider-card">
+                    <div class="provider-card__icon">⚡</div>
+                    <h3 class="provider-card__name">Groq</h3>
+                    <p class="provider-card__desc">Llama 3.3 70B with the fastest inference. Perfect for real-time
+                        terminal use.</p>
+                    <span class="provider-card__tag provider-card__tag--free">Free Tier</span>
+                </div>
+                <div class="provider-card">
+                    <div class="provider-card__icon">🏠</div>
+                    <h3 class="provider-card__name">Ollama</h3>
+                    <p class="provider-card__desc">Run models locally. Fully private, no API key needed. Zero data
+                        leaves your machine.</p>
+                    <span class="provider-card__tag provider-card__tag--local">100% Local</span>
+                </div>
+                <div class="provider-card">
+                    <div class="provider-card__icon">🤖</div>
+                    <h3 class="provider-card__name">OpenAI</h3>
+                    <p class="provider-card__desc">GPT-4o-mini for those who want the power of OpenAI's flagship models.
+                    </p>
+                    <span class="provider-card__tag provider-card__tag--premium">Premium</span>
+                </div>
+                <div class="provider-card">
+                    <div class="provider-card__icon">💎</div>
+                    <h3 class="provider-card__name">Google Gemini</h3>
+                    <p class="provider-card__desc">Gemini Flash — fast, affordable AI with Google's latest architecture.
+                    </p>
+                    <span class="provider-card__tag provider-card__tag--free">Free Tier</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ════════ INSTALL ════════ -->
+    <section class="install section-padding" id="install">
+        <div class="container">
+            <div class="install__content">
+                <div class="install__header reveal">
+                    <span class="section-label">Get Started</span>
+                    <h2 class="section-title">Up and running in <span class="gradient-text">60 seconds</span></h2>
+                    <p class="section-desc">Three commands and you're ready. Works on any Linux distribution.</p>
+                </div>
+
+                <div class="install__steps">
+                    <div class="install__step reveal reveal-delay-1">
+                        <div class="install__step-header">
+                            <div class="install__step-num">1</div>
+                            <span class="install__step-label">Clone & Install</span>
+                        </div>
+                        <div class="install__step-code">
+                            <code>git clone https://github.com/sfaz01/Omnishell.git && cd Omnishell
+python -m venv venv && source venv/bin/activate
+pip install -e ".[all]"</code>
+                            <button class="copy-btn">Copy</button>
+                        </div>
+                    </div>
+                    <div class="install__step reveal reveal-delay-2">
+                        <div class="install__step-header">
+                            <div class="install__step-num">2</div>
+                            <span class="install__step-label">Add Your API Key</span>
+                        </div>
+                        <div class="install__step-code">
+                            <code>cp .env.example .env
+# Edit .env → add your free Groq key from console.groq.com</code>
+                            <button class="copy-btn">Copy</button>
+                        </div>
+                    </div>
+                    <div class="install__step reveal reveal-delay-3">
+                        <div class="install__step-header">
+                            <div class="install__step-num">3</div>
+                            <span class="install__step-label">Launch OmniShell</span>
+                        </div>
+                        <div class="install__step-code">
+                            <code>omni</code>
+                            <button class="copy-btn">Copy</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ════════ CTA ════════ -->
+    <section class="cta section-padding">
+        <div class="container">
+            <div class="cta__box reveal">
+                <h2 class="cta__title">Ready to make your terminal <span class="gradient-text">intelligent?</span></h2>
+                <p class="cta__desc">Join Linux users who never Google commands anymore. Free, open source, and
+                    self-healing.</p>
+                <div class="cta__actions">
+                    <a href="#install" class="btn-primary">🚀 Install Now</a>
+                    <a href="https://github.com/sfaz01/Omnishell" target="_blank" class="btn-secondary">⭐ Star on
+                        GitHub</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ════════ FOOTER ════════ -->
+    <footer class="footer">
+        <div class="container">
+            <p class="footer__text">© 2025 OmniShell — Built with 🧠 by Sarfaraz</p>
+            <div class="footer__links">
+                <a href="https://github.com/sfaz01/Omnishell" target="_blank" class="footer__link">GitHub</a>
+                <a href="https://github.com/sfaz01/Omnishell/issues" target="_blank" class="footer__link">Report Bug</a>
+                <a href="https://github.com/sfaz01/Omnishell/blob/main/LICENSE" target="_blank" class="footer__link">MIT
+                    License</a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

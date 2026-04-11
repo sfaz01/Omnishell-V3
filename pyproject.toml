@@ -1,0 +1,62 @@
+[build-system]
+requires = ["setuptools>=68.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "omnishell"
+version = "3.0.0"
+description = "A self-healing, distro-agnostic AI terminal assistant for Linux"
+readme = "README.md"
+license = {text = "MIT"}
+requires-python = ">=3.10"
+authors = [
+    {name = "Sarfaraz"},
+]
+keywords = ["ai", "terminal", "linux", "cli", "llm", "sysadmin"]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Environment :: Console",
+    "Intended Audience :: Developers",
+    "Intended Audience :: System Administrators",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: POSIX :: Linux",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Topic :: System :: Systems Administration",
+    "Topic :: Utilities",
+]
+
+dependencies = [
+    "langchain-core>=1.0",
+    "langchain-groq>=1.0",
+    "python-dotenv>=1.0",
+    "distro>=1.9",
+    "rich>=13.0",
+    "tenacity>=9.0",
+]
+
+[project.optional-dependencies]
+web = ["streamlit>=1.50"]
+ollama = ["langchain-ollama>=0.1"]
+openai = ["langchain-openai>=0.1"]
+gemini = ["langchain-google-genai>=2.0"]
+all = [
+    "streamlit>=1.50",
+    "langchain-ollama>=0.1",
+    "langchain-openai>=0.1",
+    "langchain-google-genai>=2.0",
+]
+
+[project.scripts]
+omni = "omnishell.cli:main"
+
+[project.urls]
+Homepage = "https://github.com/sfaz01/Omnishell"
+Repository = "https://github.com/sfaz01/Omnishell"
+Issues = "https://github.com/sfaz01/Omnishell/issues"
+
+[tool.setuptools.packages.find]
+include = ["omnishell*"]

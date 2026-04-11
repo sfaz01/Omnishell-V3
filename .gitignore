@@ -3,13 +3,15 @@
 
 # Python Virtual Environment
 venv/
+.venv/
 env/
 
 # Python compiled files
 __pycache__/
 *.py[cod]
+*.pyo
 
-# Distribution / Build directories
+# Distribution / Build
 build/
 dist/
 *.egg-info/
@@ -17,3 +19,14 @@ dist/
 
 # Logs
 *.log
+
+# IDE
+.vscode/
+.idea/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# OmniShell data
+*.db

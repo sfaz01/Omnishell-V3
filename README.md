@@ -15,23 +15,23 @@
 
 </div>
 
-## ✨ Features
+##  Features
 
 | Feature | Description |
 |---------|-------------|
-| 🧠 **Distro-Agnostic** | Auto-detects your Linux distro (Arch, Ubuntu, Fedora, etc.) and uses the correct package manager |
-| 🩹 **Self-Healing** | If a command fails, OmniShell captures the error and suggests a fixed version automatically |
-| 🛡️ **Safety First** | Regex-based blocklist prevents dangerous commands (`rm -rf /`, fork bombs, disk overwrites) |
-| 👁️ **Context Aware** | Runs diagnostic commands to understand your system state before generating commands |
-| 🗣️ **Explain Mode** | Press `x` to get a plain-English explanation of any suggested command |
-| 💬 **Conversational** | Remembers context — say "install nginx" then "now start it" and it knows what "it" means |
-| 📜 **Command History** | SQLite-backed history with stats — never lose track of what you've run |
-| 🎨 **Rich Terminal UI** | Beautiful output with syntax highlighting, panels, spinners, and tables |
-| 🌐 **Web Dashboard** | Streamlit-powered web UI with dark glassmorphism theme |
-| 🔌 **Multi-LLM** | Works with Groq, Ollama (local), OpenAI, and Google Gemini |
-| 🏃 **Dry-Run Mode** | Preview commands without executing — great for learning |
+|  **Distro-Agnostic** | Auto-detects your Linux distro (Arch, Ubuntu, Fedora, etc.) and uses the correct package manager |
+|  **Self-Healing** | If a command fails, OmniShell captures the error and suggests a fixed version automatically |
+|  **Safety First** | Regex-based blocklist prevents dangerous commands (`rm -rf /`, fork bombs, disk overwrites) |
+|  **Context Aware** | Runs diagnostic commands to understand your system state before generating commands |
+|  **Explain Mode** | Press `x` to get a plain-English explanation of any suggested command |
+|  **Conversational** | Remembers context — say "install nginx" then "now start it" and it knows what "it" means |
+|  **Command History** | SQLite-backed history with stats — never lose track of what you've run |
+|  **Rich Terminal UI** | Beautiful output with syntax highlighting, panels, spinners, and tables |
+|  **Web Dashboard** | Streamlit-powered web UI with dark glassmorphism theme |
+|  **Multi-LLM** | Works with Groq, Ollama (local), OpenAI, and Google Gemini |
+|  **Dry-Run Mode** | Preview commands without executing — great for learning |
 
-## 🚀 Quick Start
+##  Quick Start
 
 ### 1. Clone & Install
 
@@ -73,7 +73,7 @@ omni --mode newbie --provider groq "install docker"
 omni --dry-run "delete old kernels"
 ```
 
-## 💻 Usage Modes
+## Usage Modes
 
 ### CLI Mode (Terminal)
 
@@ -146,7 +146,7 @@ omnishell/
 └── README.md
 ```
 
-## 🛡️ Safety
+##  Safety
 
 OmniShell uses a **multi-layer safety system**:
 
